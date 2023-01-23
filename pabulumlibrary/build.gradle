@@ -1,4 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+group = 'com.dotypos.lib.scales'
+version = '1.0'
 
 android {
     compileSdkVersion 29
@@ -31,7 +35,19 @@ android {
         }
     }
 
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.dotypos.lib.scales'
+                artifactId = 'pabulumlibrary'
+                version = '1.0'
 
+                afterEvaluate {
+                    from components.release
+                }
+            }
+        }
+    }
 }
 
 dependencies {
